@@ -1,0 +1,16 @@
+{% extends 'stacionar/base.html' %}
+
+{% block content %}
+
+<form action="{% url 'zvit_page' %}" method="post" class="search_form">
+	{% csrf_token %}
+	<div class="search_field" style="width: 100%;">
+		<label class="main_text" style="width: 38%">Оберіть клас діагнозу, за яким треба сформувати звіт:</label>
+		{{ form.diagnosis_type }}
+	</div><br>
+	<div style="text-align: center; margin: 3% 0">
+		<button type="submit" class="main_button">Пошук</button><br><br>
+	</div>
+</form>
+
+{% endblock %}

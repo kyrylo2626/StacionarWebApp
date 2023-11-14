@@ -1,0 +1,28 @@
+{% extends 'stacionar/base.html' %}
+
+{% block content %}
+
+<form action="{% url 'dani_diagnoz_page' %}" method="post" class="search_form">
+    {% csrf_token %}
+    {% for msg in messages %}
+        {% if msg.tags == 'success' %}
+        <h1 style="color: green;">{{ msg }}</h1><br>
+        {% endif %}
+    {% endfor %}
+    <h1>Введіть дані діагноза:</h1><br>
+    <div class="search_row">
+        <div class="search_field" style="width: 45%">
+            <label class="main_text" style="width: 23%">Клас діагноза:</label>
+            {{ form.type_name }}
+        </div>
+        <div class="search_field" style="width: 54%">
+            <label class="main_text" style="width: 32%">Найменування діагноза:</label>
+            {{ form.name }}
+        </div>
+    </div><br>
+    <div style="text-align: center; margin: 3% 0">
+        <button type="submit" class="main_button">Додати</button>
+    </div>
+</form>
+
+{% endblock %}

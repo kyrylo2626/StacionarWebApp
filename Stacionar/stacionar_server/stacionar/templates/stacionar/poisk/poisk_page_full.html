@@ -1,0 +1,50 @@
+{% extends 'stacionar/poisk/poisk_page_empty.html' %}
+
+{% block data %}
+<hr style="margin: 2% 0"><br>
+
+	{% if list == 1 %}
+	<table class="patient_table">
+		<tr style="background: #eeeeee;">
+			<th>№</th>
+			<th>ПІБ пацієнта</th>
+			<th>Стан</th>
+			<th>Діагноз</th>
+			<th>Лікар</th>
+			<th>Відділення</th>
+		</tr>
+		{% for patient in patients %}
+		<tr data-href="{% url 'patient_data' patient.pk %}">
+			<td data-th="№" class="num">{{ forloop.counter|add:first_obj }}.</td>
+			<td data-th="ПІБ пацієнта">{{ patient.last_name }} {{ patient.first_name }} {{ patient.middle_name }}</td>
+			<td data-th="Стан">{{ patient.status }}</td>
+			<td data-th="Діагноз">{{ patient.diagnosis }}</td>
+			<td data-th="Лікар">{{ patient.doctor.last_name }} {{ patient.doctor.first_name.0 }}.{{ patient.doctor.middle_name.0 }}.</td>
+			<td data-th="Відділення">{{ patient.department.name }} №{{ patient.department.number }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	{% else %}
+	<div class="empty_result">
+		<h1>Нічого не знайдено</h1>
+	</div>
+	{% endif %}
+
+{% endblock %}
+
+{% block footer %}
+
+	{% if count_patients > 5 %}
+		{% if page_number == 1 %}
+			<a href="{% url 'poisk_page' next_page %}" class="main_button">></a>
+		{% elif page_number == max_page %}
+			<a href="{% url 'poisk_page' prev_page %}" class="main_button"><</a>
+		{% else %}
+			<a href="{% url 'poisk_page' prev_page %}" class="main_button"><</a>
+			<a href="{% url 'poisk_page' next_page %}" class="main_button">></a>
+		{% endif %}
+	{% endif %}
+
+{% endblock %}
+
+

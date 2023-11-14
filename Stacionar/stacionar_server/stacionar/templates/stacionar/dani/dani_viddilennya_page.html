@@ -1,0 +1,28 @@
+{% extends 'stacionar/base.html' %}
+
+{% block content %}
+
+<form action="{% url 'dani_viddilennya_page' %}" method="post" class="search_form">
+    {% csrf_token %}
+    {% for msg in messages %}
+        {% if msg.tags == 'success' %}
+        <h1 style="color: green;">{{ msg }}</h1><br>
+        {% endif %}
+    {% endfor %}
+    <h1>Введіть дані відділення:</h1><br>
+    <div class="search_row">
+        <div class="search_field" style="width: 70%">
+            <label class="main_text" style="width: 27%">Найменування відділення:</label>
+            {{ form.name }}
+        </div>
+        <div class="search_field" style="width: 28%">
+            <label class="main_text" style="width: 48%">Номер відділення:</label>
+            {{ form.number }}
+        </div>
+    </div><br>
+    <div style="text-align: center; margin: 3% 0">
+        <button type="submit" class="main_button">Додати</button>
+    </div>
+</form>
+
+{% endblock %}

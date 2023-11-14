@@ -1,0 +1,18 @@
+{% extends 'stacionar/base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="main_page">
+    <div class="main_left_column">
+        <h1 class="main_title">Комунальний заклад<br>«Міська клінічна лікарня №4»<br>Дніпровської міської ради</h1>
+        <span class="main_text">Стаціонар. Приймальне відділення.</span><br><br>
+        <span class="main_text"><b>Завідувач відділення:</b><br>Овчарук Валерія Іванівна<br>Телефон — 380-63-234-32-58<br>Ел.пошта — ovkvaleriya@gmail.com</span><br>
+        <span class="main_text">Телефон приймальної — 380-63-234-32-59</span>
+    </div>
+    <div class="main_right_column">
+        <img src="{% static 'stacionar/images/bolnica4.jpg' %}" class="main_image">
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,279 @@
+.container {
+	max-width: 90%;
+	margin: 0 auto;
+}
+
+/* Navigation panel start */
+
+.header {
+	inset: 0;
+	z-index: 1000;
+}
+
+.nav_panel {
+	margin: 30px 0;
+	background-color: #3f51b5;
+	height: 90px;
+	display: flex;
+	justify-content: center;
+	z-index: 1;
+	position: relative;
+}
+
+.nav_button, .nav_button:link {
+	width: 10%;
+	text-align: center;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+	font-family: 'OpenSans', sans-serif;
+	font-size: 16px;
+	text-transform: uppercase;
+	color: white;
+	font-weight: 600;
+	text-decoration: none;
+	transition: background-color 0.2s linear;
+}
+
+.nav_button:hover {
+    background-color: #5B6ED4;
+}
+
+.nav_button:active {
+    background-color: gray;
+}
+
+
+
+.nav_div, .nav_div:link {
+	width: 10%;
+	display: none;
+	flex-direction: column;
+  	align-items: center;
+  	justify-content: center;
+	position: absolute;
+	left: 35%;
+	top: 90px;
+}
+
+.nav_sub_button {
+	height: 90px;
+	width: 100%;
+	background-color: #5B6ED4;
+	text-align: center;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+	font-family: 'OpenSans', sans-serif;
+	font-size: 16px;
+	text-transform: uppercase;
+	color: white;
+	font-weight: 600;
+	text-decoration: none;
+	transition: background-color 0.2s linear;
+}
+
+.nav_sub_button:hover {
+    background-color: #3f51b5;
+}
+
+.nav_sub_button:active {
+    background-color: gray;
+}
+
+/*Body*/
+
+body {
+	margin: 0;
+	font-family: 'OpenSans', sans-serif;
+	font-size: 12px;
+	line-height: 1.6;
+}
+
+.login_form {
+	background: white;
+	position: fixed; /* or absolute */
+    top: 50%;
+    left: 50%;
+    margin: -12.5% 0 0 -20%;
+    border: 3px #3f51b5 solid;
+    border-radius: 10px;
+	width: 40%;
+	height: 50%;
+	padding: 2%;
+}
+
+.log {
+	color: white;
+	background: #3f51b5;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	width: 112%;
+	margin: -6% 0 0 -6%;
+	padding: 3% 0;
+}
+
+.main {
+	margin-top: 2.5%;
+}
+
+.main_page {
+	height: 65%;
+	margin: 90px 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+.main_left_column {
+	padding-left: 2%;
+	width: 50%;
+	float: left;
+}
+
+.main_right_column {
+	padding-right: 2%;
+	width: 50%;
+	float: right;
+}
+
+.main_image {
+	width: 100%;
+}
+
+.main_title {
+	font-family: 'OpenSans', sans-serif;
+	font-weight: 800;
+	font-size: 24pt;
+	color: black;
+	text-transform: uppercase;
+	line-height: 1.4;
+}
+
+.main_text {
+	font-family: 'OpenSans', sans-serif;
+	font-size: 20px;
+}
+
+/*Button*/
+
+.main_button, .main_button:link {
+	border: none;
+	/* width: 100%; */
+	font-family: 'OpenSans', sans-serif;
+	font-size: 16pt;
+	font-weight: 600;
+	border-radius: 7px;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	transition: background-color 0.2s linear;
+	padding: 20px 90px;
+	background-color: #3f51b5;
+}
+
+.main_button:hover {
+    background-color: #5B6ED4;
+}
+
+.main_button:active {
+    background-color: gray;
+}
+
+
+
+
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
+*, *:link, *:visited, *:hover, *:active {
+	box-sizing: border-box;
+}
+
+
+/*Input data*/
+
+.input_field {
+	border: none;
+	border-bottom: 1px black solid;
+	text-align: center;
+	font-size: 14pt;
+	height: 100%;
+	outline: none;
+	width: 100%;
+}
+
+.search_form {
+	width: 100%;
+}
+
+.search_row {
+	display: flex;
+	justify-content: space-between;
+	height: 60px;
+	align-items: center;
+}
+
+.search_field {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.select_element {
+	border: none;
+	border-bottom: 1px black solid;
+	outline: none;
+	width: 100%;
+	text-align: center;
+	font-size: 14pt;
+	cursor: pointer;
+}
+
+.form_date {
+	border: none;
+	border-bottom: 1px black solid;
+	outline: none;
+	font-size: 16pt;
+	font-family: 'OpenSans', sans-serif;
+	text-align: center;
+	cursor: pointer;
+}
+
+/*Table*/
+
+table, th, td {
+	border: 1px gray solid;
+	border-collapse: collapse;
+	font-size: 18px;
+}
+
+td {
+	padding: 5px 10px;
+}
+
+tr:hover {
+	background: #eeeeee;
+}
+
+.patient_table {
+	width: 100%;
+}
+
+.num {
+	text-align: center;
+}
+
+.empty_result {
+	text-align: center;
+	margin-bottom: 10%;
+}
+
+
+/*Footer*/
+
+.page_buttons {
+	margin: 5% 0;
+	text-align: center;
+}

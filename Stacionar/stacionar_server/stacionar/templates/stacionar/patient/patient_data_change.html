@@ -1,0 +1,77 @@
+{% extends 'stacionar/base.html' %}
+
+{% block content %}
+
+<form action="{% url 'patient_data_save' form.data.id %}" method="post" id="patient_data_change" class="search_form">
+{% csrf_token %}
+<h1>Змінити дані пацієнта:</h1>
+<br><br>
+<div class="search_row">
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 20%">Прізвище:</label>
+        {{ form.last_name }}
+    </div>
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 10%">Ім'я:</label>
+        {{ form.first_name }}
+    </div>
+</div>
+<div class="search_row">
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 20%">По-батькові:</label>
+        {{ form.middle_name }}
+    </div>
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 28%">Дата народження:</label>
+        {{ form.date_of_birth }}
+    </div>
+</div>
+<div class="search_row">
+    <div class="search_field" style="width: 53%">
+        <label class="main_text" style="width: 18%">ПІБ лікаря:</label>
+        {{ form.doctor }}
+    </div>
+    <div class="search_field" style="width: 45%">
+        <label class="main_text" style="width: 22%">Відділення:</label>
+        {{ form.department }}
+    </div>
+</div>
+<div class="search_row">
+    <div class="search_field" style="width: 53%">
+        <label class="main_text" style="width: 12%">Діагноз:</label>
+        {{ form.diagnosis }}
+    </div>
+</div>
+<div class="search_row">
+    <div class="search_field" style="width: 42%">
+        <label class="main_text" style="width: 30%">Тип пацієнта:</label>
+        {{ form.type_patient }}
+    </div>
+    <!-- Плановий -->
+    <div class="search_field" id="planovy1" style="width: 56%; display: none">
+        <label class="main_text" style="width: 20%">Направлення:</label>
+        {{ form.direction }}
+    </div>
+    <!-- Ургентний -->
+    <div class="search_field" id="urgentny" style="width: 56%; display: none">
+        <label class="main_text" style="width: 23%">Захворювання з:</label>
+        {{ form.time_of_beginning }}
+    </div>
+</div>
+<!-- Плановий -->
+<div class="search_row" id="planovy2" style="display: none">
+    <div class="search_field" style="width: 100%">
+        <label class="main_text" style="width: 13%">Назва закладу:</label>
+        {{ form.direction_name }}
+    </div>
+</div>
+
+<br><br>
+<br><br>
+
+<div class="search_row" style="justify-content: center;">
+    <button type="submit" form="patient_data_change" class="main_button" style="width: 25%">Змінити дані</button>
+</div>
+</form>
+
+{% endblock %}

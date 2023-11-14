@@ -1,0 +1,112 @@
+{% extends 'stacionar/base.html' %}
+
+{% block content %}
+<h1>Дані пацієнта:</h1>
+<br><br>
+<div class="search_row">
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 20%">ПІБ пацієнта:</label>
+        <label class="main_text" style="width: 80%">{{ patient }}</label>
+    </div>
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 27%">Дата народження:</label>
+        <label class="main_text" style="width: 73%">{{ patient.date_of_birth|date:'d.m.Y' }}</label>
+    </div>
+</div>
+<div class="search_row">
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 20%">Тип пацієнта:</label>
+        <label class="main_text" style="width: 80%">{{ patient.type_patient }}</label>
+    </div>
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 25%">Статус пацієнта:</label>
+        <label class="main_text" style="width: 75%">{{ patient.status }}</label>
+    </div>
+</div>
+<div class="search_row">
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 13%">Діагноз:</label>
+        <label class="main_text" style="width: 87%">{{ patient.diagnosis }}</label>
+    </div>
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 18%">Відділення:</label>
+        <label class="main_text" style="width: 82%">{{ patient.department }}</label>
+    </div>
+</div>
+<div class="search_row">
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 10%">Лікар:</label>
+        <label class="main_text" style="width: 90%">{{ patient.doctor }}</label>
+    </div>
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 19%">Зараховано:</label>
+        <label class="main_text" style="width: 81%">{{ patient.time_create|date:'d.m.Y H:i' }}</label>
+    </div>
+</div>
+<br><br>
+
+{% if patient.type_patient.type_patient == 'Плановий' %}
+<!-- Плановий -->
+
+<div class="search_row">
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 21%">Направлення:</label>
+        <label class="main_text" style="width: 79%">{{ patient.direction }}</label>
+    </div>
+</div>
+<div class="search_row">
+    <div class="search_field" style="width: 100%">
+        <label class="main_text" style="width: 11%">Назва закладу:</label>
+        <label class="main_text" style="width: 89%">{{ patient.direction_name }}</label>
+    </div>
+</div>
+
+{% elif patient.type_patient.type_patient == 'Ургентний' %}
+<!-- Ургентний -->
+
+<div class="search_row">
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 26%">Початок хвороби:</label>
+        <label class="main_text" style="width: 74%">{{ patient.time_of_beginning|date:'d.m.Y H:i' }}</label>
+    </div>
+</div>
+
+{% endif %}
+
+{% if patient.status.status == 'Виписано' %}
+
+<br><br>
+<div class="search_row">
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 16%">Виписано:</label>
+        <label class="main_text" style="width: 84%">{{ patient.time_of_ending|date:'d.m.Y H:i' }}</label>
+    </div>
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 17%">Результат:</label>
+        <label class="main_text" style="width: 83%">{{ patient.result }}</label>
+    </div>
+</div>
+<div class="search_row">
+    <div class="search_field" style="width: 49%">
+        <label class="main_text" style="width: 26%">Лікарняний лист:</label>
+        <label class="main_text" style="width: 74%">{{ patient.patient_paper }}</label>
+    </div>
+</div>
+
+{% endif %}
+
+<br><br>
+<br><br>
+
+<div class="search_row" style="justify-content: center;">
+    {% if patient.status.status == 'Виписано' %}
+        <a href="{% url 'patient_data_change' patient.pk %}" class="main_button" style="width: 25%">Змінити дані</a>
+    {% else %}
+        <div class="search_field" style="width: 50%">
+            <a href="{% url 'patient_data_change' patient.pk %}" class="main_button" style="width: 48%">Змінити дані</a>
+            <a href="{% url 'patient_data_release' patient.pk %}" class="main_button" style="width: 48%">Виписати</a>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

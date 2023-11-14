@@ -1,0 +1,62 @@
+{% extends 'stacionar/base.html' %}
+
+{% block content %}
+
+	<form action="{% url 'poisk_page' %}" method="post" id="poisk_form" class="search_form">
+		{% csrf_token %}
+		<h1>Пошук пацієнтів:</h1><br>
+		<div>
+			<div class="search_row">
+				<div class="search_field" style="width: 60%">
+					<label class="main_text" style="width: 18%">ПІБ пацієнта:</label>
+					{{ form.patinet_name }}
+				</div>
+				<div class="search_field" style="width: 38%">
+					<label class="main_text" style="width: 30%">Тип пацієнта:</label>
+					{{ form.patient_type }}
+				</div>
+			</div>
+			<div class="search_row">
+				<div class="search_field" style="width: 60%">
+					<label class="main_text" style="width: 18%">ПІБ лікаря:</label>
+					{{ form.doctor }}
+				</div>
+				<div class="search_field" style="width: 38%">
+					<label class="main_text" style="width: 30%">Спеціалізація:</label>
+					{{ form.doctor_spec }}
+				</div>
+			</div>
+			<div class="search_row">
+				<div class="search_field" style="width: 42%">
+					<label class="main_text" style="width: 30%">Клас діагнозу:</label>
+					{{ form.diagnosis_type }}
+				</div>
+				<div class="search_field" style="width: 56%">
+					<label class="main_text" style="width: 18%">Діагноз:</label>
+					{{ form.diagnosis }}
+				</div>
+			</div>
+			<div class="search_row">
+				<div class="search_field" style="width: 42%">
+					<label class="main_text" style="width: 30%">Статус пацієнта:</label>
+					{{ form.patient_status }}
+				</div>
+				<div class="search_field" style="width: 56%">
+					<label class="main_text" style="width: 18%">Відділення:</label>
+					{{ form.department }}
+				</div>
+			</div>
+		</div><br>
+		<div style="text-align: center; margin: 2% 0 3% 0">
+			<button type="submit" form="poisk_form" class="main_button">Пошук</button><br><br>
+		</div>
+	</form>
+
+	{% block data %}
+	{% endblock %}
+
+{% endblock %}
+
+
+
+

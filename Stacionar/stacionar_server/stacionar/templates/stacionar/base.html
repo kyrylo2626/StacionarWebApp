@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<meta charset="UTF-8">
+
+	{% if title %}
+		<title>{{ title }}</title>
+	{% else %}
+		<title>Стаціонар</title>
+	{% endif %}
+
+	<link rel="stylesheet" href="{% static 'stacionar/css/style.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+	<link href="{% static 'stacionar/css/searchDropDown.css' %}" rel="stylesheet"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<script src="{% static 'stacionar/js/view.js' %}"></script>
+</head>
+
+<body>
+
+	<!--Навігаційна панель-->
+
+	<header class="header">
+		<div class="container">
+			<nav class="nav_panel">
+				<a href="{% url 'main_page' %}" class="nav_button">Головна</a>
+				<a href="{% url 'dani_page' %}" class="nav_button" id="dani_button">Дані</a>
+				<div class="nav_div" id="div_menu">
+					<a href="{% url 'dani_pacient_page' %}" class="nav_sub_button">Додати<br>пацієнта</a>
+					<a href="{% url 'dani_likar_page' %}" class="nav_sub_button">Додати<br>лікаря</a>
+					<a href="{% url 'dani_viddilennya_page' %}" class="nav_sub_button">Додати<br>відділення</a>
+					<a href="{% url 'dani_diagnoz_page' %}" class="nav_sub_button">Додати<br>діагноз</a>
+				</div>
+				<a href="{% url 'poisk_page' %}" class="nav_button">Пошук</a>
+				<a href="{% url 'zvit_page' %}" class="nav_button">Звітність</a>
+				<a href="{% url 'logout' %}" class="nav_button">Вийти</a>
+			</nav>
+		</div>
+	</header>
+
+	<div class="main">
+    	<div class="container">
+			
+			{% if form.errors %}
+				{% for error in form.non_field_errors %}
+				<div class="container" style="text-align: center; margin-top: 5%;">
+					<label class="main_text" style="color: red">{{ error }}</label>
+				</div>
+				{% endfor %}
+			{% endif %}
+
+			{% block content %}
+			{% endblock %}
+		</div>
+	</div>
+
+	<footer class="footer_field">
+		<div class="container">
+			<div class="page_buttons">
+				{% block footer %}
+				{% endblock %}
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>

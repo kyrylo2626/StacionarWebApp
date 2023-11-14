@@ -1,0 +1,24 @@
+{% extends 'stacionar/base.html' %}
+
+{% block content %}
+
+<div class="search_form">
+    <div class="search_row" style="justify-content: space-evenly; margin: 5% 0">
+        <div class="search_field" style="width: 40%">
+            <a href="{% url 'dani_pacient_page' %}" class="main_button" style="width: 100%;">Додати пацієнта</a>
+        </div>
+        <div class="search_field" style="width: 40%">
+            <a href="{% url 'dani_likar_page' %}" class="main_button" style="width: 100%;">Додати лікаря</a>
+        </div>
+    </div>
+    <div class="search_row" style="justify-content: space-evenly; margin: 5% 0">
+        <div class="search_field" style="width: 40%">
+            <a href="{% url 'dani_viddilennya_page' %}" class="main_button" style="width: 100%;">Додати відділення</a>
+        </div>
+        <div class="search_field" style="width: 40%">
+            <a href="{% url 'dani_diagnoz_page' %}" class="main_button" style="width: 100%;">Додати діагноз</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

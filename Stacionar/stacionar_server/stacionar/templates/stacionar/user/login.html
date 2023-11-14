@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Авторизація</title>
+	<link rel="stylesheet" href="{% static 'stacionar/css/style.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body style="background: #ebedf7;">
+
+{% if request.user.is_authenticated %}
+<div class="container" style="text-align: center; margin-top: 20%;">
+    <label class="main_text" style="color: red">Ви вже авторизовані як: {{ user.username }}</label>
+</div>
+{% else %}
+
+{% for error in form.non_field_errors %}
+<div class="container" style="text-align: center; margin-top: 5%;">
+    <label class="main_text" style="color: red">{{ error }}</label>
+</div>
+{% endfor %}
+
+<form method="post" class="login_form" style="text-align: center">
+    {% csrf_token %}
+    <h1 class="log">Вхід в систему</h1><br><br>
+    <div class="search_row">
+        <div class="search_field" style="width: 100%; text-align: start">
+            {{ form.username }}
+        </div>
+    </div>
+    <div class="search_row">
+        <div class="search_field" style="width: 100%; text-align: start">
+            {{ form.password }}
+        </div>
+    </div><br><br>
+    <div class="search_row" style="justify-content: center;">
+        <button type="submit" class="main_button" style="width: 35%; padding: 15px 50px;">Вхід</button>
+    </div>
+</form>
+
+{% endif %}
+
+</body>

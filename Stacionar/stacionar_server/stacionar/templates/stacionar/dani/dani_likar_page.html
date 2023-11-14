@@ -1,0 +1,38 @@
+{% extends 'stacionar/base.html' %}
+
+{% block content %}
+
+<form action="{% url 'dani_likar_page' %}" method="post" class="search_form">
+    {% csrf_token %}
+    {% for msg in messages %}
+        {% if msg.tags == 'success' %}
+        <h1 style="color: green;">{{ msg }}</h1><br>
+        {% endif %}
+    {% endfor %}
+    <h1>Введіть дані лікаря:</h1><br>
+    <div class="search_row">
+        <div class="search_field" style="width: 52%">
+            <label class="main_text" style="width: 20%">Прізвище:</label>
+            {{ form.last_name }}
+        </div>
+        <div class="search_field" style="width: 46%">
+            <label class="main_text" style="width: 10%">Ім'я:</label>
+            {{ form.first_name }}
+        </div>
+    </div>
+    <div class="search_row">
+        <div class="search_field" style="width: 45%">
+            <label class="main_text" style="width: 20%">По-батькові:</label>
+            {{ form.middle_name }}
+        </div>
+        <div class="search_field" style="width: 53%">
+            <label class="main_text" style="width: 21%">Спеціалізація:</label>
+            {{ form.specialization }}
+        </div>
+    </div><br>
+    <div style="text-align: center; margin: 3% 0">
+        <button type="submit" class="main_button">Додати</button>
+    </div>
+</form>
+
+{% endblock %}
