@@ -1,0 +1,1 @@
+venv\Scripts\python.exe stacionar_server\manage.py runserver
