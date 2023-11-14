@@ -1,35 +1,35 @@
-Запуск налаштовано через 
+The launch is configured through the venv virtual environment, so the dependencies from the "requirements.txt" file must be configured to launch.
 
-1. Запуск проекту з наповненою тестовими даними БД (демонстраційний режим):
+1. Launching the project with a database filled with test data (demonstration mode):
 
-Разом з проектом надається БД з тестовими даними "stacionar_server\Dump20230617.sql". Для її підключення необхідно створити базу даних з ім'ям "stacionar" (charset: utf8, collation: utf8_general_ci), та імортувати дані з файлу дампу в цю БД. Налаштуванння підключення БД знаходяться в файлі "stacionar_server\config.py":
+The database with test data "stacionar_server\Dump20230617.sql" is provided together with the project. To connect it, you need to create a database with the name "stacionar" (charset: utf8, collation: utf8_general_ci), and import data from the dump file to this database. DB connection settings are in the "stacionar_server\config.py" file:
 
 """
 
 host = "localhost"
 user = "root"
 password = "root"
-db_name = "stacionar"
+db_name = "stationary"
 
 ip = '127.0.0.1'
 port = 3306
 
 """
 
-Після налаштувань підключення БД для запуску проекту необхідно виконати файл "run.bat".
+After the DB connection settings, the "run.bat" file must be executed to start the project.
 
-2. Запуск проекту з порожньою БД (робочий режим):
+2. Starting the project with an empty database (working mode):
 
-1) Виконати файл "manage_db.bat".
-2) Виконати файл "run.bat".
+1) Run the "manage_db.bat" file.
+2) Run the "run.bat" file.
 
-3. Для створення облікового запису адміністратора необхідно виконати файл "admin.bat".
+3. To create an administrator account, you need to execute the "admin.bat" file.
 
 
-Дані для входу в систему:
+Login details:
 login: Administrator
 password: password
 
-Дані для доступу до БД:
+Database access data:
 login: root
 password: root
